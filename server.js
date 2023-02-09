@@ -31,6 +31,11 @@ app.all(
     ? (req, res, next) => {
         purgeRequireCache();
 
+        if (req.query._data && 'httpError' in req.query) {
+          // Simulate error outside of remix's control, e.g. misconfigured cdn, proxy or load balancer
+          return res.send('Http error page', 500);
+        }
+
         return createRequestHandler({
           build: require(BUILD_DIR),
           mode: process.env.NODE_ENV,

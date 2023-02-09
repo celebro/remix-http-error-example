@@ -21,11 +21,28 @@ export default function App() {
         <Links />
       </head>
       <body>
+        Root
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
     </html>
+  );
+}
+
+export function CatchBoundary() {
+  return (
+    <div>
+      Catch boundary
+    </div>
+  );
+}
+
+export function ErrorBoundary() {
+  return (
+    <div>
+      Error boundary
+    </div>
   );
 }
